@@ -1,0 +1,60 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="appsettings.Development.json" />
+    <None Remove="appsettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.Development.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.msbuild" Version="2.9.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    <PackageReference Include="Moq" Version="4.14.5" />
+    <PackageReference Include="NSubstitute" Version="4.2.2" />
+    <PackageReference Include="SpecFlow" Version="3.4.3" />
+    <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.4.3" />
+    <PackageReference Include="SpecFlow.xUnit" Version="3.4.3" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+    <PackageReference Include="xunit" Version="2.4.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+    <PackageReference Include="coverlet.collector" Version="1.3.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\Domain\devboost.dronedelivery.core.domain.csproj" />
+    <ProjectReference Include="..\..\..\Infra\Data\devboost.dronedelivery.Infra.Data.csproj" />
+    <ProjectReference Include="..\..\..\Infra\Security\Domain\devboost.dronedelivery.security.domain\devboost.dronedelivery.security.domain.csproj" />
+    <ProjectReference Include="..\..\..\Infra\Security\Services\devboost.dronedelivery.security.service.csproj" />
+    <ProjectReference Include="..\..\..\Pagamento\Api\devboost.dronedelivery.pagamento\devboost.dronedelivery.pagamento.Api.csproj" />
+    <ProjectReference Include="..\..\..\Pagamento\Domain\devboost.dronedelivery.pagamento.domain\devboost.dronedelivery.pagamento.domain.csproj" />
+    <ProjectReference Include="..\..\..\Pagamento\Infra\devboost.dronedelivery.pagamento.EF\devboost.dronedelivery.pagamento.EF.csproj" />
+    <ProjectReference Include="..\..\..\Pagamento\Services\devboost.microservices.pagamento.services\devboost.dronedelivery.pagamento.services.csproj" />
+    <ProjectReference Include="..\..\Api\devboost.dronedelivery.Api.csproj" />
+    <ProjectReference Include="..\..\Domain\devboost.dronedelivery.domain\devboost.dronedelivery.domain.csproj" />
+  </ItemGroup>
+
+</Project>

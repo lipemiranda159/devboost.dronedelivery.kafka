@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\devboost.dronedelivery.pagamento.domain\devboost.dronedelivery.pagamento.domain.csproj" />
+    <ProjectReference Include="..\..\Infra\devboost.dronedelivery.pagamento.EF\devboost.dronedelivery.pagamento.EF.csproj" />
+    <ProjectReference Include="..\devboost.dronedelivery.pagamento.EF\devboost.dronedelivery.pagamento.EF.csproj" />
+  </ItemGroup>
+
+</Project>
