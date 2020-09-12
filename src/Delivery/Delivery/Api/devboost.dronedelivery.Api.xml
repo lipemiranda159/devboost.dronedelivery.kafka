@@ -176,6 +176,12 @@
                
             </remarks>
         </member>
+        <member name="M:devboost.dronedelivery.Api.Controllers.PedidosController.GetAll">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:devboost.dronedelivery.Extensions.ServiceCollectionExtensions">
             <summary>
             Service Collection extensions

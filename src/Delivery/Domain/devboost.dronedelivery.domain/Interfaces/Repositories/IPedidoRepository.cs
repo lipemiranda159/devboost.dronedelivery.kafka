@@ -11,6 +11,8 @@ namespace devboost.dronedelivery.domain.Interfaces.Repositories
         List<Pedido> ObterPedidos(int situacao);
         Task<Pedido> PegaPedidoPendenteAsync(string GatewayId);
 
+        Task<IEnumerable<Pedido>> ObterTodosPedidos();
+
         void SetState(Pedido pedido, EntityState entityState);
     }
 }

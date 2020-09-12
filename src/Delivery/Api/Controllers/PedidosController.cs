@@ -2,6 +2,7 @@
 using devboost.dronedelivery.domain.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace devboost.dronedelivery.Api.Controllers
@@ -67,5 +68,15 @@ namespace devboost.dronedelivery.Api.Controllers
             return await _pedidoFacade.CreatePedidoAsync(pedido);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Pedido>>> GetAll()
+        {
+            var result = await _pedidoFacade.ObterTodosPedidos();
+            return Ok(result);
+        }
     }
 }

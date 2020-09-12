@@ -1,4 +1,5 @@
 ﻿using devboost.dronedelivery.core.domain.Entities;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace devboost.dronedelivery.domain.Interfaces
@@ -7,5 +8,8 @@ namespace devboost.dronedelivery.domain.Interfaces
     {
         Task AssignDroneAsync();
         Task<Pedido> CreatePedidoAsync(Pedido pedido);
+
+        Task<IEnumerable<Pedido>> ObterTodosPedidos();
+
     }
 }

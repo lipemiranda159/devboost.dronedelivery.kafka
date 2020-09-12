@@ -5,7 +5,6 @@ using devboost.dronedelivery.Services;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,16 +21,16 @@ namespace devboost.dronedelivery.sb.service
         {
             var user = new LoginDTO()
             {
-                UserName = "admin_drone",
+                UserId = "admin_drone",
                 Password = "AdminAPIDrone01!"
             };
 
-            var request = new StringContent(JsonConvert.SerializeObject(user));
+            var request = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
 
             using var client = new HttpClient();
             client.BaseAddress = new Uri(_urlPedidos);
             var tokenJson = await client.PostAsync("api/login", request);
-            var token = JSONHelper.DeserializeJObject<Token>(tokenJson) as Token;
+            var token = JSONHelper.DeserializeJsonToObject<Token>(await tokenJson.Content.ReadAsStringAsync()) as Token;
             return token.AccessToken;
         }
 

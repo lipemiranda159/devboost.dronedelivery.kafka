@@ -1,7 +1,5 @@
 ﻿using devboost.dronedelivery.sb.domain.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -21,7 +19,7 @@ namespace devboost.dronedelivery.sb.service
         }
         public async Task ProcessorQueueAsync()
         {
-            using var cancellationToken = new CancellationTokenSource(TimeSpan.FromSeconds(30));
+            using var cancellationToken = new CancellationTokenSource(TimeSpan.FromSeconds(5));
             var messages = await _consumer.ExecuteAsync(cancellationToken.Token, "pedido");
             var token = await _loginProvider.GetTokenAsync();
             foreach (var message in messages)

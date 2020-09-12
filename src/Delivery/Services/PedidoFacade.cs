@@ -4,6 +4,7 @@ using devboost.dronedelivery.domain.Enums;
 using devboost.dronedelivery.domain.Interfaces;
 using devboost.dronedelivery.domain.Interfaces.Repositories;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace devboost.dronedelivery.felipe.Facade
@@ -72,6 +73,11 @@ namespace devboost.dronedelivery.felipe.Facade
             pedido.Situacao = (int)StatusPedido.AGUARDANDO_ENVIO;
             pedido.DataUltimaAlteracao = DateTime.Now;
             await _pedidoRepository.UpdateAsync(pedido);
+        }
+
+        public async Task<IEnumerable<Pedido>> ObterTodosPedidos()
+        {
+            return await _pedidoRepository.ObterTodosPedidos();
         }
 
         public async Task<Pedido> CreatePedidoAsync(Pedido pedido)

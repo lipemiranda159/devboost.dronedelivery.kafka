@@ -12,7 +12,7 @@ namespace devboost.dronedelivery.sb.service
     public class PedidosService : HttpServiceBase, IPedidosService
     {
         private const string MediaType = "application/json";
-        private const string PedidoUri = "api/Pedido";
+        private const string PedidoUri = "api/Pedidos";
         private const string AuthorizationType = "Bearer";
 
         public PedidosService(IConfiguration configuration) : base(configuration)

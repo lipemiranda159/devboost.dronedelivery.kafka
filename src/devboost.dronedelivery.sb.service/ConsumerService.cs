@@ -37,10 +37,10 @@ namespace devboost.dronedelivery.sb.service
                 {
                     var message = StartProcess;
                     while (!string.IsNullOrEmpty(message))
-                    {
-                        result.Add(message);
+                    {                        
                         var cr = consumer.Consume(stopingToken);
                         message = cr.Message.Value;
+                        result.Add(message);
                     }
                 }
                 catch (OperationCanceledException)

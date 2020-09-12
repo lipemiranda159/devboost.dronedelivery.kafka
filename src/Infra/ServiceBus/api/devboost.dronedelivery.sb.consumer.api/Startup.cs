@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using devboost.dronedelivery.sb.consumer.api.Filter;
 using devboost.dronedelivery.sb.domain.Interfaces;
 using devboost.dronedelivery.sb.service;
@@ -9,12 +5,9 @@ using Hangfire;
 using Hangfire.MemoryStorage;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace devboost.dronedelivery.sb.consumer.api
 {
@@ -62,10 +55,10 @@ namespace devboost.dronedelivery.sb.consumer.api
             {
                 endpoints.MapControllers();
             });
-            var queue = app.ApplicationServices.GetService<IBackgroundJobClient>();
-            var processorQueue = app.ApplicationServices.GetService<IProcessorQueue>();
 
-            queue.Schedule(() => processorQueue.ProcessorQueueAsync(), TimeSpan.FromSeconds(10));
+            var processorQueue = app.ApplicationServices.GetService<IProcessorQueue>();
+            var recurringJobManager = app.ApplicationServices.GetService<IRecurringJobManager>();
+            recurringJobManager.AddOrUpdate("pedidos", () => processorQueue.ProcessorQueueAsync(), "*/5 * * * * *");
         }
     }
 }
