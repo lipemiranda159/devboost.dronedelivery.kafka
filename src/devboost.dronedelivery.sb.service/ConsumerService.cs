@@ -11,11 +11,13 @@ namespace devboost.dronedelivery.sb.service
 {
     public class ConsumerService: ServiceBase, IConsumer
     {
+        private const string StartProcess = "IniciaProcesso";
+
         public ConsumerService(IConfiguration configuration) : base(configuration)
         {
         }
 
-        public async Task<List<string>> ExecuteAsync(CancellationToken stopingToken, string topic, string topicName)
+        public async Task<List<string>> ExecuteAsync(CancellationToken stopingToken, string topicName)
         {
             var result = new List<string>();
 
@@ -26,13 +28,6 @@ namespace devboost.dronedelivery.sb.service
                 AutoOffsetReset = AutoOffsetReset.Earliest
             };
 
-            CancellationTokenSource cts = new CancellationTokenSource();
-            Console.CancelKeyPress += (_, e) =>
-            {
-                e.Cancel = true;
-                cts.Cancel();
-            };
-
             try
             {
                 using var consumer = new ConsumerBuilder<Ignore, string>(config).Build();
@@ -40,11 +35,11 @@ namespace devboost.dronedelivery.sb.service
 
                 try
                 {
-                    var message = "IniciaProcesso";
+                    var message = StartProcess;
                     while (!string.IsNullOrEmpty(message))
                     {
                         result.Add(message);
-                        var cr = consumer.Consume(cts.Token);
+                        var cr = consumer.Consume(stopingToken);
                         message = cr.Message.Value;
                     }
                 }

@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace devboost.dronedelivery.sb.domain.Interfaces
 {
-    public interface IConsumer
+    public interface ILoginProvider
     {
-        Task<List<string>> ExecuteAsync(CancellationToken stopingToken, string topicName);
-
+        Task<string> GetTokenAsync();
     }
 }
