@@ -13,5 +13,10 @@
     <PackageReference Include="Hangfire.MemoryStorage" Version="1.7.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\devboost.dronedelivery.sb.service\devboost.dronedelivery.sb.service.csproj" />
+    <ProjectReference Include="..\..\domain\devboost.dronedelivery.sb.domain\devboost.dronedelivery.sb.domain.csproj" />
+  </ItemGroup>
+
 
 </Project>
