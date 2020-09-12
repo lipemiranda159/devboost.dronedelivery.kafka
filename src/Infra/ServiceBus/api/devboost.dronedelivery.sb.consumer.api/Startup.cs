@@ -34,6 +34,8 @@ namespace devboost.dronedelivery.sb.consumer.api
             services.AddSingleton(Configuration);
             services.AddSingleton<IConsumer, ConsumerService>();
             services.AddSingleton<IProcessorQueue, ProcessorService>();
+            services.AddSingleton<ILoginProvider, LoginProvider>();
+            services.AddSingleton<IPedidosService, PedidosService>();
             services.AddHangfire(config => config.UseMemoryStorage());
 
         }
