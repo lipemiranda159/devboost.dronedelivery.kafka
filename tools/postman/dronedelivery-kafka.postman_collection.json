@@ -1,0 +1,104 @@
+{
+	"info": {
+		"_postman_id": "2afc22c1-bef5-489d-a569-19f1edd6d8db",
+		"name": "dronedelivery-kafka",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "post-pedido-topico",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.kafka.json.v2+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"records\": [\r\n\r\n {\"key\":\"\",\"value\":{\r\n        \"clienteId\": 1,\r\n        \"peso\": 10,\r\n        \"situacao\": 0,\r\n        \"pagamento\": {\r\n        \"dadosPagamentos\":\r\n        [\r\n            {\r\n                \"Id\":0,\r\n                \"Dados\":\"num_cartao:0000000000000000,validade:08/28,Codigo:123,Nome:Joao\"\r\n            }\r\n        ],\r\n        \"tipoPagamento\": 0,\r\n        \"statusPagamento\": 0,\r\n        \"descricao\": \"teste\"\r\n        }\r\n}}\t ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/topics/pedido",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"topics",
+						"pedido"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obter-token-login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userId\": \"admin_drone\",\r\n  \"password\": \"AdminAPIDrone01!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5002/api/Login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5002",
+					"path": [
+						"api",
+						"Login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultar-todos-pedidos",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6WyJhZG1pbl9kcm9uZSIsImFkbWluX2Ryb25lIl0sImp0aSI6ImM4YWUzY2YwYzg2NjQxYzdhZTJkOTY5ZWJkM2FmZDIxIiwibmJmIjoxNTk5OTQ0ODAzLCJleHAiOjE1OTk5NDQ4OTMsImlhdCI6MTU5OTk0NDgwMywiaXNzIjoiRXhlbXBsb0lzc3VlciIsImF1ZCI6IkV4ZW1wbG9BdWRpZW5jZSJ9.A9ZXEVcUBMqHiKNBqANVFKgGy86RfyoBTyGS2zDMcc66BCI6aWYjfuNcG6eF9x9LVQLz2TBG9v_AhHKAD0O00XrwDPSm2YipGZ8dSjsjFlBIZM-ww_65qFLcILTIea7vwop-VSu0Yziry1JompYb32oiH0uCaGsE2zTwS0TnNXkn6jaJ6Nx7YS3hmXOVUR90X5p4VdoumB5qSWl8V-NB04si4UDrOaiq-hjEk9kCsWL_BEt_7lv0FmRGceOp6chpd55IANLzFvXWOKidln891p9R1nG0uiqQJG1DBKPTcw_NJBzJ1jicOZLzohjPxgOf-AxTWd_znwJpnX2uVMvqsg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5002/api/Pedidos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5002",
+					"path": [
+						"api",
+						"Pedidos"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
