@@ -7,11 +7,9 @@ namespace devboost.dronedelivery.sb.service
 {
     public class ServiceBase
     {
-        protected readonly string _topicName;
         protected readonly string _kafcaConnection;
-        public ServiceBase(string topicName, IConfiguration configuration)
+        public ServiceBase(IConfiguration configuration)
         {
-            _topicName = topicName;
             _kafcaConnection = configuration.GetConnectionString("kafkaConnection");
         }
     }
