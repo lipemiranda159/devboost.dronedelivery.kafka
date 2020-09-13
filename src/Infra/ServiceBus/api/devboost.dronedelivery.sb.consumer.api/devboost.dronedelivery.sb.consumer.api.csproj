@@ -2,6 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>02a0cb31-360b-4e29-b052-b29ad4a1dfae</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..\..\..</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,11 +14,12 @@
   <ItemGroup>
     <PackageReference Include="Hangfire" Version="1.7.12" />
     <PackageReference Include="Hangfire.MemoryStorage" Version="1.7.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\devboost.dronedelivery.sb.service\devboost.dronedelivery.sb.service.csproj" />
     <ProjectReference Include="..\..\domain\devboost.dronedelivery.sb.domain\devboost.dronedelivery.sb.domain.csproj" />
+    <ProjectReference Include="..\..\domain\devboost.dronedelivery.sb.service\devboost.dronedelivery.sb.service.csproj" />
   </ItemGroup>
 
 
