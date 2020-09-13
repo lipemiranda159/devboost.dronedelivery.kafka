@@ -5,6 +5,7 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-alpine3.11 AS build
 WORKDIR /src
 COPY ["Delivery/Api/devboost.dronedelivery.Api.csproj", "Delivery/Api/"]
+COPY ["Delivery/Api/devboost.dronedelivery.Api.xml", "Delivery/Api/"]
 COPY ["Infra/Security/Domain/devboost.dronedelivery.security.domain/devboost.dronedelivery.security.domain.csproj", "Infra/Security/Domain/devboost.dronedelivery.security.domain/"]
 COPY ["Infra/Data/devboost.dronedelivery.Infra.Data.csproj", "Infra/Data/"]
 COPY ["Delivery/Domain/devboost.dronedelivery.domain/devboost.dronedelivery.domain.csproj", "Delivery/Domain/devboost.dronedelivery.domain/"]

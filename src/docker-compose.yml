@@ -3,7 +3,7 @@ services:
   drone-delivery:
     build:
       context: .
-      dockerfile: Delivery/Api/devboost.dronedelivery.Api/Dockerfile
+      dockerfile: Delivery/Api/Dockerfile
     container_name: dronedelivery
     restart: unless-stopped
     ports:
@@ -13,7 +13,7 @@ services:
   pagamento:
     build:
       context: .
-      dockerfile: Pagamento/Api/devboost.dronedelivery.pagamento.Api/Dockerfile
+      dockerfile: Pagamento/Api/devboost.dronedelivery.pagamento/Dockerfile
     container_name: pagamento
     restart: unless-stopped
     ports:
@@ -21,6 +21,17 @@ services:
     networks:
       - net
 
+  hangfire-api:
+    build:
+      context: .
+      dockerfile: Infra/ServiceBus/api/devboost.dronedelivery.sb.consumer.api/Dockerfile
+    container_name: dronedelivery
+    restart: unless-stopped
+    ports:
+      - '5003:80'
+    networks:
+      - net
+    
   zookeeper:
     image: confluentinc/cp-zookeeper:5.5.1
     hostname: zookeeper
