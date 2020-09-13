@@ -3,7 +3,7 @@ services:
   drone-delivery:
     build:
       context: .
-        dockerfile: Delivery/Api/devboost.dronedelivery.Api/Dockerfile
+      dockerfile: Delivery/Api/devboost.dronedelivery.Api/Dockerfile
     container_name: dronedelivery
     restart: unless-stopped
     ports:
@@ -13,7 +13,7 @@ services:
   pagamento:
     build:
       context: .
-        dockerfile: Pagamento/Api/devboost.dronedelivery.pagamento.Api/Dockerfile
+      dockerfile: Pagamento/Api/devboost.dronedelivery.pagamento.Api/Dockerfile
     container_name: pagamento
     restart: unless-stopped
     ports:
