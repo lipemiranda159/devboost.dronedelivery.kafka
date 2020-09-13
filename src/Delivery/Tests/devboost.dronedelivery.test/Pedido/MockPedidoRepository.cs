@@ -46,6 +46,11 @@ namespace devboost.dronedelivery.test
             return _pedidos;
         }
 
+        public Task<IEnumerable<Pedido>> ObterTodosPedidos()
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<core.domain.Entities.Pedido> PegaPedidoPendenteAsync(string GatewayId)
         {
             throw new System.NotImplementedException();
