@@ -1,11 +1,13 @@
-# devboost.microservices
-Grupo 4 - Projeto Itaú (Microservices)
+# devboost.dronedelivery.kafka
+Grupo 4 - Projeto Itaú (Kafka)
 
 ## Tecnologias:
 
 - ASP.NET Core 3.1
 - ASP.NET WebApi Core with JWT Identity Authentication
 - Entity Framework Core 3.1
+- Kafka
+- Hangfire
 
 ## Arquitetura:
 
